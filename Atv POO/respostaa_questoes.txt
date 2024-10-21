@@ -1,0 +1,62 @@
+1- A classe é um modelo que define quais características e comportamentos um conjunto de objetos pode ter.
+ O objeto é uma instância da classe, ele possui os atributos definidos pela classe com seus próprios valores. 
+ (Ex.: Classe: animal (podendo variar tamanho, cor, quantidade de patas, presença de asas, hábitos etc); 
+ objetos: elefante, formiga, pássaro etc, cada um com suas características, sendo diferentes instâncias da classe animal.
+
+2- Os atributos são as características que os objetos da classe podem ter. Na programação eles são variáveis 
+que armazenam dados sobre o objeto. Os métodos são as ações que os objetos da classe podem realizar.
+Exemplo: Uma Biblioteca e Seus Livros
+
+• Classe: Biblioteca
+
+• Atributos: Nome, endereço, quantidade de livros, horário de funcionamento;
+
+• Métodos: adicionarLivro(), removerLivro(), consultarLivro(), renovarEmprestimo().
+
+• Objeto Livro: um livro específico da biblioteca
+
+• Atributos: Título, autor, ISBN, número de páginas, ano de publicação, status (disponível ou emprestado);
+
+• Métodos: emprestar(), devolver().
+
+5-
+
+Atributo                |  Não é importante       |  Moderadamente importante  |    Essencial
+|- - - - - - - - - - -  |  - - - - - - - - - -  - | - - - - - - - - - - - - - -|- - - - - - - - - - - - - - - - - | 
+CPF                     |  Jogo da memória        |  sistema de hotel          |   sistema de saúde
+
+Histórico de            |    sistema de           |  sistema de entrada em     |
+saúde                   |    supermercado         |  clube com piscina         |    sistema de hospital
+                                                                        
+Quantidade              |   sistema de hospital   |   sistema de agência       |   rede social                 
+de seguidores           |                         |   de modelos               |
+                            
+Habilidade              |     sistema de hotel    |   sistema de escola        |  sistema de clube 
+destra                  |                         |                            |  de futebol
+                           
+Endereço                |     jogo da memória     |   supermercado             |   sistema de escola 
+
+Saldo da                |  sistema de televisor   |  jogo de tabuleiro digital |    sistema de banco
+conta                   |                         |                            |
+
+
+4-
+a) Sim, armazenar a "pessoa" como atributo da "conta" em um sistema bancário é importante para garantir a integridade, 
+segurança e eficiência do sistema, além de facilitar a gestão de dados e o controle de acesso. Uma conta pertence a uma 
+pessoa específica e uma pessoa pode ter várias contas; ao armazenar a "pessoa" como atributo da "conta", o sistema 
+centraliza as informações do titular diretamente relacionadas à conta, como nome, CPF, endereço, etc; as transações 
+também são associadas à pessoa titular.
+
+b) Sim, é comum uma pessoa ter mais de uma conta e ter contas de tipos diferentes (conta corrente, poupança, 
+investimentos, etc). Seria interessante usar lista para armazenar contas de uma pessoa, pois seria possível adicionar 
+e remover contas com mais facilidade além de poder iterar pelas contas com um loop e também acessa-las pelos índices.
+
+5- Exemplos dados pela questão: aluno.
+Professor, disciplina, turma, coordenador, sala.
+Resposta: laboratório, diretor geral, calendário acadêmico, unidade/campus, curso.
+
+6- Dominó
+Atributos: número de jogadores (de 2 a 4), jogadores, partida, placar, ficha, tempo limite de jogada, peça, 
+número de peças. 
+Métodos: gerar código de partida, adentrar partida com código, adentrar partida aleatória, passar jogador, 
+realizar jogada, contar pontos restantes, finalizar partida, alterar placar, sair do jogo.
