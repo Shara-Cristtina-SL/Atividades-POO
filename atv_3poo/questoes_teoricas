@@ -1,0 +1,28 @@
+1-  Na tipagem dinâmica o tipo de uma variável é determinado apenas quando o programa está sendo executado. Isso significa que você pode atribuir diferentes tipos de dados a uma mesma variável ao longo do código. Já na tipagem estática o tipo de uma variável é definido no momento em que o código é escrito e é verificado pelo compilador antes da execução.
+
+2- A detecção tardia de erros de tipo. Enquanto a tipagem estática verifica esses erros durante o processo de compilação, a tipagem dinâmica só os identifica em tempo de execução. Isso significa que bugs relacionados a tipos podem passar despercebidos durante o desenvolvimento e só se manifestar quando o programa está em produção, o que pode levar a comportamentos inesperados e até mesmo a falhas do sistema.
+
+3-
+Python
+
+minha_lista = [1, 2, 3]
+minha_lista.append("quatro")  # Isso não gerará um erro imediatamente, mas pode causar problemas mais tarde
+
+JavaScript 
+
+var resultado = "10" + 5; // resultado será "105" em vez de 15
+
+4- O C permite que você converta explicitamente um tipo de dado para outro, mesmo que não haja uma relação direta entre eles. Essa flexibilidade, embora útil em algumas situações, pode levar a comportamentos inesperados e a erros difíceis de detectar.
+
+int x = 10;
+float y = (float)x; // Conversão explícita de int para float
+
+char *ptr = (char *)&x; // Conversão do endereço de um inteiro para um ponteiro para caractere
+
+No primeiro exemplo, estamos convertendo um inteiro para um float. Essa conversão é relativamente segura, pois um float pode representar um inteiro. No entanto, o segundo exemplo é mais problemático. Estamos convertendo o endereço de um inteiro para um ponteiro para caractere. Isso significa que podemos tratar os bytes que representam o inteiro como se fossem caracteres.
+
+Por que isso é problemático?
+
+Representação interna dos dados: A representação interna de um inteiro e de um caractere pode ser diferente em diferentes arquiteturas de computador. Acessar os bytes de um inteiro como se fossem caracteres pode levar a resultados imprevisíveis.
+Alinhamento de memória: Acessar a memória de forma não alinhada pode causar falhas em algumas arquiteturas.
+Perda de informações: Ao converter um tipo de dado para outro, você pode perder informações. Por exemplo, ao converter um float para um inteiro, a parte fracionária é descartada.
