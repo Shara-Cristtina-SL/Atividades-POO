@@ -1,0 +1,1 @@
+// Com strictNullChecks: true, o código TS teve um erro de compilação.
