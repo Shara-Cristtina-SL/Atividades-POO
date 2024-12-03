@@ -1,0 +1,50 @@
+6-
+a- Sim, o sistema está sempre conferindo se as regras de negócio.
+b- Sim, facilitaria o entendimento do código e das regras de negócio poi ficaria mais organizado.
+
+c-
+Classe Banco;
+
+Prós:
+Centraliza a lógica relacionada ao banco.
+Torna o banco responsável por todas as operações relacionadas às contas e clientes.
+
+Contras:
+Pode sobrecarregar a classe Banco com muitas responsabilidades.
+A lógica de associação pode ser mais complexa se houver várias formas de associação (por exemplo, titular, cotitular).
+
+Uma abordagem comum e recomendada é criar uma classe específica para gerenciar a associação entre clientes e contas. 
+Essa classe poderia ser chamada de AssociacaoClienteConta ou RelacionamentoClienteConta.
+
+Por quê?
+
+Coesão: A classe AssociacaoClienteConta teria a responsabilidade única de gerenciar as associações, aumentando a coesão 
+do seu sistema.
+Reutilização: Essa classe poderia ser reutilizada em diferentes partes do sistema, como em relatórios, consultas e outras
+ operações que envolvam a relação entre clientes e contas.
+Flexibilidade: Permite modelar diferentes tipos de associação (titular, cotitular, etc.) de forma mais flexível.
+Exemplo de Implementação:
+
+TypeScript
+"class AssociacaoClienteConta {
+    clienteId: number;
+    contaId: number;
+    tipoAssociacao: string; // titular, cotitular, etc.
+    // ... outros atributos
+
+    constructor(clienteId: number, contaId: number, tipoAssociacao: string) {
+        // ...
+    }
+}
+
+class Banco {
+    // ...
+    private associacoes: AssociacaoClienteConta[] = [];
+
+    associarClienteAConta(clienteId: number, contaId: number, tipoAssociacao: string) {
+        // Verificar se a associação já existe
+        // ...
+        // Criar uma nova associação e adicioná-la à lista
+        this.associacoes.push(new AssociacaoClienteConta(clienteId, contaId, tipoAssociacao));
+    }
+}"
