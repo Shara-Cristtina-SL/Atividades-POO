@@ -1,4 +1,4 @@
-class Postagem{
+/*class Postagem{
     id : number;
     texto: string;
     quantidadeCurtidas: number;
@@ -119,4 +119,4 @@ console.log(M1.postagens)
 M1.incluirPostagem(P2);
 console.log(M1.postagens);
 console.log(M1.buscarMaisCurtida());
-console.log(M1.toString())
+console.log(M1.toString())*/
