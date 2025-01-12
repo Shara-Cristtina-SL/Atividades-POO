@@ -373,7 +373,7 @@ export class Banco {
 
     public transferirParaMultiplasContasLimite(numeroContaOrigem: string, ContasDestino: string[], valor: number): void {
         const contaOrigem = this.consultar(numeroContaOrigem);
-        if ((ContasDestino.length * valor) <= this.consultarSaldo()) {
+        if ((ContasDestino.length * valor) <= contaOrigem.consultarSaldo()) {
             if (!contaOrigem) {
                 console.log("Conta origem não encontrada.");
                 return;
@@ -384,14 +384,12 @@ export class Banco {
                 if (contaDestino) {
                     if (contaOrigem.transferir(contaDestino, valor)) {
                         console.log(`Transferência de ${valor} da conta ${numeroContaOrigem} para ${numeroDestino} realizada com sucesso.`);
-                    } else {
-                        console.log(`Saldo insuficiente na conta ${numeroContaOrigem} para transferir para ${numeroDestino}.`);
                     }
                 } else {
                     console.log(`Conta de destino ${numeroDestino} não encontrada.`);
                 }
             }
-        }else {
+        } else {
             console.log("Saldo insulficiente!")
         }
     }

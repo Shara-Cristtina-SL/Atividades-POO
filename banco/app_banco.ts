@@ -43,6 +43,7 @@ class BancoApp {
                     break;
                 case "8":
                     this.transferirParaMultiplasContasLimite();
+                    break;
                 case "9":
                     this.totalizacoes();
                     break;
@@ -164,7 +165,7 @@ class BancoApp {
             console.log("\n=== Extrato da Conta ===");
             console.log(`ID: ${conta.id}`);
             console.log(`Número da conta: ${conta.numero}`);
-            console.log(`Saldo: R$ ${conta.saldo}`);
+            console.log(`Saldo: R$ ${conta.saldo.toFixed(2)}`);
              if (cliente && this.banco.clienteEstaCadastrado(cliente)) {
                 console.log("\n=== Dados do Cliente ===");
                 console.log(`ID: ${cliente.id}`);
@@ -173,7 +174,7 @@ class BancoApp {
 
                 console.log("Contas associadas:");
                 cliente.contas.forEach((c) =>
-                    console.log(`- Conta: ${c.numero}, Saldo: ${c.saldo}`)
+                    console.log(`- Conta: ${c.numero}, Saldo: R$ ${c.saldo.toFixed(2)}`)
                 );
 
             } else {
@@ -214,7 +215,7 @@ class BancoApp {
     private totalizacoes(): void {
         console.log("\nTotalizações:");
         console.log(`Quantidade de contas: ${this.banco.contarContas()}`);
-        console.log(`Total depositado no banco: ${this.banco.calcularTotalDepositado()}`);
+        console.log(`Total depositado no banco: R$ ${this.banco.calcularTotalDepositado().toFixed(2)}`);
         console.log(`Média de saldo das contas: ${this.banco.calcularMediaSaldos()}`);
     }
 
