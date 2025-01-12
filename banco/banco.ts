@@ -361,7 +361,7 @@ export class Banco {
             const contaDestino = this.consultar(numeroDestino);
             if (contaDestino) {
                 if (contaOrigem.transferir(contaDestino, valor)) {
-                    console.log(`Transferência de ${valor} da conta ${numeroContaOrigem} para ${numeroDestino} realizada com sucesso.`);
+                    console.log(`Transferência de R$ ${valor.toFixed(2)} da conta ${numeroContaOrigem} para ${numeroDestino} realizada com sucesso.`);
                 } else {
                     console.log(`Saldo insuficiente na conta ${numeroContaOrigem} para transferir para ${numeroDestino}.`);
                 }
@@ -383,7 +383,7 @@ export class Banco {
                 const contaDestino = this.consultar(numeroDestino);
                 if (contaDestino) {
                     if (contaOrigem.transferir(contaDestino, valor)) {
-                        console.log(`Transferência de ${valor} da conta ${numeroContaOrigem} para ${numeroDestino} realizada com sucesso.`);
+                        console.log(`Transferência de R$ ${valor.toFixed(2)} da conta ${numeroContaOrigem} para ${numeroDestino} realizada com sucesso.`);
                     }
                 } else {
                     console.log(`Conta de destino ${numeroDestino} não encontrada.`);
