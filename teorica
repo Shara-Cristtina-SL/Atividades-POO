@@ -1,0 +1,3 @@
+Questão 4, letra B: É possivel realizando mudanças apenas em appBanco,
+porém preferi usar a função de Banco para inserir conta, por isso foi necessário
+modificar o a classe banco também.
