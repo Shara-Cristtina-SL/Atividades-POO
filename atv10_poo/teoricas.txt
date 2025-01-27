@@ -1,0 +1,140 @@
+Q1.
+1. Try-Catch (Tratamento de Exceções):
+O que é: O mecanismo try...catch permite que você execute um bloco de código que pode potencialmente lançar um erro 
+(dentro do bloco try). Se ocorrer um erro, a execução é desviada para o bloco catch, onde você pode manipular a 
+exceção de forma adequada (exibir uma mensagem, logar o erro, tentar novamente, etc.).
+
+Quando usar: Ideal para lidar com erros inesperados que podem ocorrer em tempo de execução
+ (como falhas de rede, arquivos não encontrados, entradas inválidas).
+
+Exemplo em TypeScript:
+     function dividir(a: number, b: number): number {
+  if (b === 0) {
+    throw new Error("Não é possível dividir por zero.");
+  }
+  return a / b;
+}
+
+try {
+  const resultado = dividir(10, 0);
+  console.log("Resultado:", resultado); // Não será executado se houver erro
+} catch (erro) {
+  if(erro instanceof Error){
+   console.error("Ocorreu um erro:", erro.message);
+  }else{
+   console.error("Ocorreu um erro desconhecido:", erro);
+  }
+}
+
+ try {
+   const resultado2 = dividir(10, 2);
+   console.log("Resultado:", resultado2); // será executado com sucesso
+ } catch (erro) {
+  if(erro instanceof Error){
+   console.error("Ocorreu um erro:", erro.message);
+  }else{
+   console.error("Ocorreu um erro desconhecido:", erro);
+  }
+}
+   
+Explicação:
+A função dividir lança um erro se o divisor b for zero.
+O bloco try tenta executar a função dividir.
+Se um erro for lançado (como no caso da divisão por zero), a execução passa para o bloco catch.
+Dentro do catch, o erro é capturado e sua mensagem é impressa no console, evitando que o programa quebre abruptamente.
+2. Tratamento com Valores Nulos/Indefinidos (Null Checks):
+O que é: TypeScript, por meio do sistema de tipos, ajuda a prevenir erros causados pelo acesso a propriedades ou métodos de objetos que podem ser null ou undefined.
+Quando usar: Essencial para evitar NullPointerException e erros similares ao lidar com valores que podem não estar presentes (resultados de requisições, propriedades opcionais de objetos, etc.).
+Exemplo em TypeScript:
+     interface User {
+  name: string;
+  address?: { // address é uma propriedade opcional
+   street:string;
+   city:string
+  };
+}
+
+function printAddress(user: User) {
+  if (user.address) { // Verifica se address existe
+    console.log(`Endereço: ${user.address.street}, ${user.address.city}`);
+  } else {
+    console.log("Endereço não cadastrado.");
+  }
+}
+
+const user1: User = { name: "João" };
+const user2: User = { name: "Maria", address:{street:"Rua principal", city:"São Paulo"} };
+
+printAddress(user1);
+printAddress(user2);
+   
+Explicação:
+A interface User define que a propriedade address é opcional.
+Na função printAddress, usamos um if para verificar se user.address existe antes de tentar acessar as propriedades
+street e city.
+Isso evita erros caso o address seja nulo ou indefinido.
+3. Retorno de Erros em Funções (Error Handling em Tipos de Retorno):
+O que é: Em vez de lançar exceções diretamente, uma função pode indicar um erro retornando um valor especial 
+(como null, undefined, um objeto específico) ou usando um tipo que represente sucesso ou falha (como Result ou Either).
+
+Quando usar: Útil quando você quer ter um controle mais granular sobre como os erros são tratados,
+especialmente em funções que podem falhar de maneira esperada.
+
+Exemplo em TypeScript com um tipo Result:
+     type Result<T, E> =
+  | { success: true; value: T }
+  | { success: false; error: E };
+
+function safeDivisao(a: number, b: number): Result<number, string> {
+  if (b === 0) {
+    return { success: false, error: "Não é possível dividir por zero" };
+  }
+  return { success: true, value: a / b };
+}
+
+const resultado1 = safeDivisao(10, 2);
+ if(resultado1.success){
+    console.log("Resultado:", resultado1.value);
+ } else {
+    console.error("Erro:", resultado1.error)
+ }
+
+const resultado2 = safeDivisao(10, 0);
+if (resultado2.success) {
+   console.log("Resultado:", resultado2.value);
+ } else {
+   console.error("Erro:", resultado2.error);
+ }
+   
+Explicação:
+Definimos um tipo Result que pode representar um sucesso com um valor (value) ou uma falha com um erro (error).
+A função safeDivisao retorna um objeto Result. Se a divisão for bem-sucedida, ela retorna { success: true, value: resultado }.
+Caso contrário, retorna { success: false, error: "mensagem de erro" }. Ao chamar safeDivisao, verificamos a propriedade 
+success para saber se a operação foi bem-sucedida e podemos tratar o valor ou o erro adequadamente.
+Observações:
+Escolha o método adequado: A escolha do método de tratamento de erros depende do seu caso de uso específico e da
+complexidade do seu código.
+
+Boas práticas: É recomendado sempre informar ao usuário o que aconteceu, logar os erros para depuração e evitar "quebrar"
+a aplicação.
+Contexto é crucial: As formas de tratamento de erro podem ser combinadas para melhor atender às necessidades do seu projeto.
+
+-----------------------------------------------------------------------------------------------------------------------
+Q2.
+Limitações:
+try...catch: Ótimo para síncrono, mas não lida com assíncrono; pode gerar código aninhado.
+Promises com .catch(): Trata assíncrono, mas pode gerar encadeamento confuso e não permite um tratamento de erros
+por tipo de erro.
+async/await com try...catch: Melhora a legibilidade do assíncrono, mas ainda exige try...catch e o uso da palavra-chave
+async.
+------------------------------------------------------------------------------------------------------------------------
+Q3.
+Nada, apenas não transfere (sem tratamento de erro). Exibe mensagem de saldo insuficiente (com lançamento de erro).
+-------------------------------------------------------------------------------------------------------------------------
+Q4.
+Sim, o lançamento foi propagado. É bom que impeça a aplicação de ficar com erros, porém há falta de tratamento, 
+a aplicação encerra sem dar a chance do usuário tentar novamente.  
+
+
+
+
