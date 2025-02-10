@@ -45,7 +45,10 @@ export class Perfil {
         return this.apelido;
     }
     get perfil_foto(): string{
-        return this.foto
+        return this.foto;
+    }
+    get perfil_status(): string{
+        return this.status;
     }
 }
 

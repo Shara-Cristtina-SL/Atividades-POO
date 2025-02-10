@@ -2,7 +2,7 @@ import * as readline from 'readline';
 import { RedeSocial } from './redeSocial';
 import { Perfil, PerfilAvancado, Publicacao } from './perfil';
 import { AmizadeJaExistenteError, PerfilInativoError, PerfilJaCadastradoError, PerfilNaoAutorizadoError } from './excecoes';
-import { error } from 'console';
+import { PersistenciaDeDados } from './persistenciaDados';
 export class RedeSocialInterativa {
     private redeSocial: RedeSocial;
     private rl: readline.Interface;
@@ -52,7 +52,9 @@ export class RedeSocialInterativa {
         console.log('1. Adicionar Perfil');
         console.log('2. Listar Perfis');
         console.log('3. Ativar/Desativar Perfil');
-        console.log('4. Voltar ao Menu Principal');
+        console.log('4. Salvar')
+        console.log('5. Recuperar')
+        console.log('6. Voltar ao Menu Principal');
         this.rl.question('Escolha uma opção: ', (opcao) => {
             switch (opcao) {
                 case '1':
@@ -65,6 +67,12 @@ export class RedeSocialInterativa {
                     this.ativarDesativarPerfil();
                     break;
                 case '4':
+                    this.salvarPerfis();
+                    break;
+                case '5':
+                    this.recuperarPerfis();
+                    break;
+                case '5':
                     this.menuPrincipal();
                     break;
                 default:
@@ -136,6 +144,28 @@ export class RedeSocialInterativa {
                 this.menuPerfis();
             }
         });
+    }
+
+    private salvarPerfis(): void{
+        try{
+        PersistenciaDeDados.salvarPerfis(this.redeSocial.listarPerfis())
+        console.log("Sucesso.")
+        this.menuPerfis();
+        }catch(erro){
+            console.error("Erro ao salvar perfis.")
+            this.menuPerfis()
+        }
+    }
+
+    private recuperarPerfis(): void{
+        try{
+            PersistenciaDeDados.recuperarPerfis();
+            console.log("Sucesso.");
+            this.menuPerfis();
+            }catch(erro){
+                console.error("Erro ao salvar perfis.");
+                this.menuPerfis();
+            }
     }
 
     // Métodos do menuPublicacoes
