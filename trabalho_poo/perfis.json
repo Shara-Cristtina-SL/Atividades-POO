@@ -1,1 +1,58 @@
-[{"id":"1","apelido":"a","foto":".","email":"a.com","status":"ativo","amigos":[],"postagens":[]}]
+[
+  {
+    "id": "1",
+    "apelido": "a",
+    "foto": ".",
+    "email": "a.com",
+    "status": "ativo",
+    "tipo": "normal"
+  },
+  {
+    "id": "2",
+    "apelido": "b",
+    "foto": "..",
+    "email": "b.com",
+    "status": "ativo",
+    "tipo": "normal"
+  },
+  {
+    "id": "3",
+    "apelido": "c",
+    "foto": "...",
+    "email": "c.com",
+    "status": "ativo",
+    "tipo": "normal"
+  },
+  {
+    "id": "4",
+    "apelido": "d",
+    "foto": "....",
+    "email": "d.com",
+    "status": "ativo",
+    "tipo": "normal"
+  },
+  {
+    "id": "2",
+    "apelido": "e",
+    "foto": "",
+    "email": "",
+    "status": "ativo",
+    "tipo": "normal"
+  },
+  {
+    "id": "4",
+    "apelido": "d",
+    "foto": ".....",
+    "email": "e.com",
+    "status": "ativo",
+    "tipo": "normal"
+  },
+  {
+    "id": "6",
+    "apelido": "f",
+    "foto": ";)",
+    "email": "f.com",
+    "status": "ativo",
+    "tipo": "avancado"
+  }
+]

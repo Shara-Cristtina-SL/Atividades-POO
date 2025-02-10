@@ -40,24 +40,34 @@ export class Perfil {
     ativarDesativarPerfil(): void {
         this.status = this.status === 'ativo' ? 'inativo' : 'ativo';
     }
-
-    get apelido_perfil(): string{
+    getId(): string {
+        return this.id;
+    }
+    getApelido(): string {
         return this.apelido;
     }
-    get perfil_foto(): string{
+    estaAtivo(): boolean {
+        return this.status === 'ativo';
+    }
+    getEmail(): string {
+        return this.email;
+    }
+
+    getperfil(): string {
+        return this.apelido;
+    }
+    getfoto(): string {
         return this.foto;
     }
-    get perfil_status(): string{
+    getstatus(): string {
         return this.status;
     }
-}
 
-export class PerfilAvancado extends Perfil {
-    habilitarDesabilitarPerfil(perfil: Perfil): void {
-        perfil.ativarDesativarPerfil();
+    getemail(): string {
+        return this.email;
     }
+    
 }
-
 
 export class Publicacao {
     private id: string;
@@ -71,8 +81,16 @@ export class Publicacao {
         this.dataHora = new Date();
         this.perfil = perfil;
     }
-    get perfilApelido(): string{
-        return this.perfil.apelido_perfil;
+    get perfilApelido(): string {
+        return this.perfil.getApelido();
+    }
+
+    get perfil_perfil(): Perfil{
+        return this.perfil;
+    }
+
+    getid():string{
+        return this.perfil.getId();
     }
 }
 
@@ -110,4 +128,9 @@ export enum TipoInteracao {
     NaoCurtir = '👎',
     Riso = '😂',
     Surpresa = '😮'
+}
+export class PerfilAvancado extends Perfil {
+    habilitarDesabilitarPerfil(perfil: Perfil): void {
+        perfil.ativarDesativarPerfil();
+    }
 }
